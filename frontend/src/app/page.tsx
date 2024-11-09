@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import CartItem, { Product } from './CartItem'; // Asegúrate de que la ruta sea correcta
-import CartSummary from './CartSummary'; // Asegúrate de que la ruta sea correcta
+import CartItem, { Product } from '../components/cart/CartItem'; // Ensure the path is correct
+import CartSummary from '../components/cart/CartSummary'; // Ensure the path is correct
 
 const Page: React.FC = () => {
     // Estado para los productos en el carrito
@@ -54,4 +54,4 @@ const Page: React.FC = () => {
     );
 };
 
-export default Page;
+export default Page;

@@ -1,38 +1,27 @@
-
-import React, { useState } from 'react';
-import AuthComponent from './components/auth/AuthComponent';
+import React from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import AppRoutes from './routes/AppRoutes';
+import './App.css'; // Asegúrate de tener un archivo CSS para los estilos
 
 const App: React.FC = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [username, setUsername] = useState<string | null>(null);
-
-  const handleLogin = (username: string, password: string) => {
-    if (username === 'admin' && password === 'password') {
-      setIsAuthenticated(true);
-      setUsername(username);
-      console.log('Usuario autenticado:', username);
-    } else {
-      alert('Nombre de usuario o contraseña incorrectos');
-    }
-  };
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    setUsername(null);
-  };
-
   return (
-    <div className="app">
-      <h1>Bienvenido a la Aplicación</h1>
-      {isAuthenticated ? (
-        <div>
-          <p>Hola, {username}</p>
-          <button onClick={handleLogout}>Cerrar Sesión</button>
-        </div>
-      ) : (
-        <AuthComponent onLogin={handleLogin} />
-      )}
-    </div>
+    <Router>
+      <div>
+        <h1>Mi Aplicación de Productos</h1>
+        <nav>
+          <Link to="/register">
+            <button>Registrar</button>
+          </Link>
+          <Link to="/login">
+            <button>Iniciar Sesión</button>
+          </Link>
+          <Link to="/products">
+            <button>Ver Productos</button>
+          </Link>
+        </nav>
+        <AppRoutes />
+      </div>
+    </Router>
   );
 };
 
